@@ -76,6 +76,7 @@ public class Frontend extends Application implements FrontendInterface {
             for (Double d : travelTimes) { //iterate thru travelTimes to sum them up into totalTime
                 totalTime += d;
             }
+            totalTime = totalTime/60; //conversion to minutes
             pathString = "Results List: ";
             for (int i = 0; i < shortestPath.size(); i++) {
                 pathString += "\n\t";
