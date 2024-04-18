@@ -101,7 +101,7 @@ public class Frontend extends Application implements FrontendInterface {
                 pathString += String.valueOf(totalTime);
                 pathString += "min";
             }
-            //createPathListDisplay(parent);
+            createPathListDisplay(parent);
         });
         parent.getChildren().add(find);
     }
