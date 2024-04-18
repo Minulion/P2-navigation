@@ -185,7 +185,7 @@ public class Frontend extends Application implements FrontendInterface {
         parent.getChildren().add(about);
 
         Button quit = new Button("Quit");
-        showTimesBox.addEventHandler(ActionEvent.ACTION, (event) -> {
+        quit.addEventHandler(ActionEvent.ACTION, (event) -> {
             Stage stage = (Stage) quit.getScene().getWindow();
             stage.close();
         });
