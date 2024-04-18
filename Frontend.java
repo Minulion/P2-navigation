@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class Frontend implements FrontendInterface {
+public class Frontend extends Application implements FrontendInterface {
 
     private static BackendPlaceholder back;
 
