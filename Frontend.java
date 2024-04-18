@@ -174,12 +174,25 @@ public class Frontend extends Application implements FrontendInterface {
         parent.getChildren().add(furthestFromButton);
     }
 
+    private boolean aboutOpen = false;
     /**
      * Creates an about and quit button.
      * @param parent parent pane that contains all controls
      */
     public void createAboutAndQuitControls(Pane parent) {
+        Label aboutText = new Label();
+        aboutText.setLayoutX(32);
+        aboutText.setLayoutY(320);
+        parent.getChildren().add(aboutText);
+
         Button about = new Button("About");
+        about.addEventHandler(ActionEvent.ACTION, (event) -> {
+            if (!aboutOpen) {
+                aboutText.setText("Type locations into the search bar \n to get started. Press this button \n again to close.");
+            } else {
+                aboutText.setText("");
+            }
+        });
         about.setLayoutX(32);
         about.setLayoutY(560);
         parent.getChildren().add(about);
