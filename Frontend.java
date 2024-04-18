@@ -43,6 +43,7 @@ public class Frontend extends Application implements FrontendInterface {
     private List<Double> travelTimes = null;
     private Double totalTime = 0.0;
     private String pathString = "";
+    private boolean showTimes = false;
 
     /**
      * Creates the controls for the shortest path search.
@@ -77,26 +78,29 @@ public class Frontend extends Application implements FrontendInterface {
                 totalTime += d;
             }
             totalTime = totalTime/60; //conversion to minutes
-            pathString = "Results List: ";
-            for (int i = 0; i < shortestPath.size(); i++) {
+
+            if (!showTimes) {
+                pathString = "Results List: ";
+                for (int i = 0; i < shortestPath.size(); i++) {
+                    pathString += "\n\t";
+                    pathString += shortestPath.get(i);
+                }
+            } else {
+                pathString += "Results List (with walking times): ";
                 pathString += "\n\t";
-                pathString += shortestPath.get(i);
-            }
-            pathString += "\n\n";
-            pathString += "Results List (with walking times): ";
-            pathString += "\n\t";
-            pathString += shortestPath.get(0);
-            for (int i = 1; i < shortestPath.size(); i++) {
+                pathString += shortestPath.get(0);
+                for (int i = 1; i < shortestPath.size(); i++) {
+                    pathString += "\n\t";
+                    pathString += "-(";
+                    pathString += String.valueOf(travelTimes.get(i - 1));
+                    pathString += "sec)->";
+                    pathString += shortestPath.get(i);
+                }
                 pathString += "\n\t";
-                pathString += "-(";
-                pathString += String.valueOf(travelTimes.get(i - 1));
-                pathString += "sec)->";
-                pathString += shortestPath.get(i);
+                pathString += "Total time: ";
+                pathString += String.valueOf(totalTime);
+                pathString += "min";
             }
-            pathString += "\n\t";
-            pathString += "Total time: ";
-            pathString += String.valueOf(totalTime);
-            pathString += "min";
             createPathListDisplay(parent);
         });
         parent.getChildren().add(find);
@@ -129,6 +133,9 @@ public class Frontend extends Application implements FrontendInterface {
      */
     public void createTravelTimesBox(Pane parent) {
         CheckBox showTimesBox = new CheckBox("Show Walking Times");
+        showTimesBox.addEventHandler(ActionEvent.ACTION, (event) -> {
+            showTimes = showTimesBox.isSelected();
+        });
         showTimesBox.setLayoutX(200);
         showTimesBox.setLayoutY(80);
         parent.getChildren().add(showTimesBox);
