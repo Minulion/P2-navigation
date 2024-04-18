@@ -46,7 +46,7 @@ public class Frontend extends Application implements FrontendInterface {
         TextField startText = new TextField();
         src.setLayoutX(32);
         src.setLayoutY(16);
-        startText.setLayoutX(64);
+        startText.setLayoutX(160);
         startText.setLayoutY(16);
         parent.getChildren().add(src);
         parent.getChildren().add(startText);
