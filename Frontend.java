@@ -153,7 +153,7 @@ public class Frontend extends Application implements FrontendInterface {
     public void createFurthestDestinationControls(Pane parent) {
         Label locationSelector = new Label("Location Selector:  ");
         TextField startText = new TextField();
-        startText.setLayoutX(600);
+        startText.setLayoutX(628);
         startText.setLayoutY(16);
         locationSelector.setLayoutX(500);
         locationSelector.setLayoutY(16);
@@ -167,7 +167,7 @@ public class Frontend extends Application implements FrontendInterface {
         
         Button furthestFromButton = new Button("Find Most Distant Location");
         furthestFromButton.addEventHandler(ActionEvent.ACTION, (event) -> {
-            furthestFromLabel.setText("Most Distance Location:  " + back.getMostDistantLocation(startText.getText()));
+            furthestFromLabel.setText("Most Distance Location:  \n" + back.getMostDistantLocation(startText.getText()));
         });
         furthestFromButton.setLayoutX(500);
         furthestFromButton.setLayoutY(48);
