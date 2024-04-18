@@ -165,11 +165,9 @@ public class Frontend extends Application implements FrontendInterface {
         furthestFromLabel.setLayoutY(80);
         parent.getChildren().add(furthestFromLabel);
         
-        String furthestLocation = "";
         Button furthestFromButton = new Button("Find Most Distant Location");
         furthestFromButton.addEventHandler(ActionEvent.ACTION, (event) -> {
-            furthestLocation = back.getMostDistantLocation(startText.getText());
-            furthestFromLabel.setText("Most Distance Location:  " + furthestLocation);
+            furthestFromLabel.setText("Most Distance Location:  " + back.getMostDistantLocation(startText.getText()));
         });
         furthestFromButton.setLayoutX(500);
         furthestFromButton.setLayoutY(48);
