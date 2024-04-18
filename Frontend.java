@@ -79,6 +79,7 @@ public class Frontend extends Application implements FrontendInterface {
         find.addEventHandler(ActionEvent.ACTION, (event) -> {
             shortestPath = back.findShortestPath(startText.getText(), endText.getText());
             travelTimes = back.getTravelTimesOnPath(startText.getText(), endText.getText());
+            totalTime = 0.0;
             for (Double d : travelTimes) { //iterate thru travelTimes to sum them up into totalTime
                 totalTime += d;
             }
