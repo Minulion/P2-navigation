@@ -86,7 +86,7 @@ public class Frontend extends Application implements FrontendInterface {
                     pathString += shortestPath.get(i);
                 }
             } else {
-                pathString += "Results List (with walking times): ";
+                pathString = "Results List (with walking times): ";
                 pathString += "\n\t";
                 pathString += shortestPath.get(0);
                 for (int i = 1; i < shortestPath.size(); i++) {
