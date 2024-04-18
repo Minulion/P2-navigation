@@ -151,15 +151,25 @@ public class Frontend extends Application implements FrontendInterface {
      * @param parent parent pane that contains all controls
      */
     public void createFurthestDestinationControls(Pane parent) {
-        Label locationSelector = new Label("Location Selector:  Memorial Union");
+        Label locationSelector = new Label("Location Selector:  ");
+        TextField startText = new TextField();
+        startText.setLayoutX(600);
+        startText.setLayoutY(16);
         locationSelector.setLayoutX(500);
         locationSelector.setLayoutY(16);
         parent.getChildren().add(locationSelector);
+        parent.getChildren().add(startText);
+
+        String furthestLocation = "";
         Button furthestFromButton = new Button("Find Most Distant Location");
+        furthestFromButton.addEventHandler(ActionEvent.ACTION, (event) -> {
+            furthestLocation = back.getMostDistantLocation(startText.getText());
+            furthestFromLabel.setText("Most Distance Location:  " + furthestLocation);
+        });
         furthestFromButton.setLayoutX(500);
         furthestFromButton.setLayoutY(48);
         parent.getChildren().add(furthestFromButton);
-        Label furthestFromLabel = new Label("Most Distance Location:  Union South");
+        Label furthestFromLabel = new Label();
         furthestFromLabel.setLayoutX(500);
         furthestFromLabel.setLayoutY(80);
         parent.getChildren().add(furthestFromLabel);
