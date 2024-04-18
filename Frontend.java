@@ -68,6 +68,11 @@ public class Frontend extends Application implements FrontendInterface {
         parent.getChildren().add(dst);
         parent.getChildren().add(endText);
 
+        Label path = new Label();
+        path.setLayoutX(32);
+        path.setLayoutY(112);
+        parent.getChildren().add(path);
+
         Button find = new Button("Submit/Find Button");
         find.setLayoutX(32);
         find.setLayoutY(80);
@@ -101,6 +106,7 @@ public class Frontend extends Application implements FrontendInterface {
                 pathString += String.valueOf(totalTime);
                 pathString += "min";
             }
+            path.setText(pathString);
         });
         parent.getChildren().add(find);
     }
@@ -111,9 +117,6 @@ public class Frontend extends Application implements FrontendInterface {
      */
     public void createPathListDisplay(Pane parent) {
         Label path = new Label();
-        path.addEventHandler(ActionEvent.ACTION, (event) -> {
-            path.setText(pathString);
-        });
         path.setLayoutX(32);
         path.setLayoutY(112);
         parent.getChildren().add(path);
