@@ -54,7 +54,7 @@ public class Frontend extends Application implements FrontendInterface {
         TextField startText = new TextField();
         src.setLayoutX(32);
         src.setLayoutY(16);
-        startText.setLayoutX(160);
+        startText.setLayoutX(176);
         startText.setLayoutY(16);
         parent.getChildren().add(src);
         parent.getChildren().add(startText);
@@ -63,7 +63,7 @@ public class Frontend extends Application implements FrontendInterface {
         TextField endText = new TextField();
         dst.setLayoutX(32);
         dst.setLayoutY(48);
-        endText.setLayoutX(160);
+        endText.setLayoutX(176);
         endText.setLayoutY(48);
         parent.getChildren().add(dst);
         parent.getChildren().add(endText);
