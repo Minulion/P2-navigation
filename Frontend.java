@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.event;
 
 public class Frontend extends Application implements FrontendInterface {
 
@@ -37,6 +38,11 @@ public class Frontend extends Application implements FrontendInterface {
         createAboutAndQuitControls(parent);
     }
 
+    private List<String> shortestPath = null;
+    private List<Double> travelTimes = null;
+    private Double totalTime = 0.0;
+    private String pathString = "";
+
     /**
      * Creates the controls for the shortest path search.
      * @param parent the parent pane that contains all controls
@@ -51,14 +57,46 @@ public class Frontend extends Application implements FrontendInterface {
         parent.getChildren().add(src);
         parent.getChildren().add(startText);
 
-        Label dst = new Label("Path End Selector: Computer Science");
+        Label dst = new Label("Path End Selector: ");
+        TextField endText = new TextField();
         dst.setLayoutX(32);
         dst.setLayoutY(48);
+        endText.setLayoutX(160);
+        endText.setLayoutY(48);
         parent.getChildren().add(dst);
+        parent.getChildren().add(endText);
 
         Button find = new Button("Submit/Find Button");
         find.setLayoutX(32);
         find.setLayoutY(80);
+        find.addEventHandler(ActionEvent.ACTION, (event) -> {
+            shortestPath = back.findShortestPath(startText.getText(), endText.getText());
+            travelTimes = back.getTravelTimesOnPath(startText.getText(), endText.getText());
+            for (Double d : travelTimes) { //iterate thru travelTimes to sum them up into totalTime
+                totalTime += d;
+            }
+            pathString = "Results List: ";
+            for (int i = 0; i < shortestPath.size(); i++) {
+                pathString += "\n\t";
+                pathString += shortestPath.get(i);
+            }
+            pathString += "\n\n";
+            pathString += "Results List (with walking times): ";
+            pathString += "\n\t";
+            pathString += shortestPath.get(0);
+            for (int i = 1; i < shortestPath.size(); i++) {
+                pathString += "\n\t";
+                pathString += "-(";
+                pathString += String.valueOf(travelTimes.get(i - 1));
+                pathString += "sec)->";
+                pathString += shortestPath.get(i);
+            }
+            pathString += "\n\t";
+            pathString += "Total time: ";
+            pathString += String.valueOf(totalTime);
+            pathString += "min";
+            createPathListDisplay(parent);
+        });
         parent.getChildren().add(find);
     }
 
@@ -68,11 +106,7 @@ public class Frontend extends Application implements FrontendInterface {
      */
     public void createPathListDisplay(Pane parent) {
         Label path =
-        new Label(
-            "Results List: \n\tMemorial Union\n\tSciene Hall\n\tPyschology\n\tComputer Science" +
-            "\n\n" +
-            "Results List (with walking times):\n\tMemorial Union\n\t-(30sec)->Science Hall\n\t-(170sec)->Psychology\n\t-(45sec)->Computer Science\n\tTotal time: 4.08min"
-            );
+        new Label(pathString);
         path.setLayoutX(32);
         path.setLayoutY(112);
         parent.getChildren().add(path);
