@@ -45,7 +45,10 @@ public class Frontend implements FrontendInterface {
         TextField startText = new TextField();
         src.setLayoutX(32);
         src.setLayoutY(16);
+        startText.setLayoutX(64);
+        startText.setLayoutY(16);
         parent.getChildren().add(src);
+        parent.getChildren().add(startText);
 
         Label dst = new Label("Path End Selector: Computer Science");
         dst.setLayoutX(32);
