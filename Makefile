@@ -1,4 +1,4 @@
-runBackendTests: BackendDeveloperTests.class
+runTests: BackendDeveloperTests.class
 	java -jar ../junit5.jar --class-path=. --select-class=BackendDeveloperTests
 
 BackendDeveloperTests.class: BackendDeveloperTests.java
