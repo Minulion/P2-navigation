@@ -104,6 +104,6 @@ public class FrontendDeveloperTests extends ApplicationTest {
      * as a JavaFX application through the following entry point.
      */
     public static void main(String[] args) {
-	    Application.launch(SampleApp.class);
+	    Application.launch(Frontend.class);
     }
 }
