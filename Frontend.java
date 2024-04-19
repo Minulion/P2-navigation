@@ -52,6 +52,7 @@ public class Frontend extends Application implements FrontendInterface {
     public void createShortestPathControls(Pane parent) {
         Label src = new Label("Path Start Selector: ");
         TextField startText = new TextField();
+        startText.setId("startTextID");
         src.setLayoutX(32);
         src.setLayoutY(16);
         startText.setLayoutX(176);
@@ -61,6 +62,7 @@ public class Frontend extends Application implements FrontendInterface {
 
         Label dst = new Label("Path End Selector: ");
         TextField endText = new TextField();
+        endText.setId("endTextID");
         dst.setLayoutX(32);
         dst.setLayoutY(48);
         endText.setLayoutX(176);
@@ -69,11 +71,13 @@ public class Frontend extends Application implements FrontendInterface {
         parent.getChildren().add(endText);
 
         Label path = new Label();
+        path.setId("pathID");
         path.setLayoutX(32);
         path.setLayoutY(112);
         parent.getChildren().add(path);
 
         Button find = new Button("Submit/Find Button");
+        find.setId("findID");
         find.setLayoutX(32);
         find.setLayoutY(80);
         find.addEventHandler(ActionEvent.ACTION, (event) -> {
@@ -138,6 +142,7 @@ public class Frontend extends Application implements FrontendInterface {
      */
     public void createTravelTimesBox(Pane parent) {
         CheckBox showTimesBox = new CheckBox("Show Walking Times");
+        showTimesBox.setId("boxID");
         showTimesBox.addEventHandler(ActionEvent.ACTION, (event) -> {
             showTimes = showTimesBox.isSelected();
         });
@@ -153,6 +158,7 @@ public class Frontend extends Application implements FrontendInterface {
     public void createFurthestDestinationControls(Pane parent) {
         Label locationSelector = new Label("Location Selector:  ");
         TextField startText = new TextField();
+        startText.setId("furthestTextID");
         startText.setLayoutX(608);
         startText.setLayoutY(16);
         locationSelector.setLayoutX(480);
@@ -161,11 +167,13 @@ public class Frontend extends Application implements FrontendInterface {
         parent.getChildren().add(startText);
 
         Label furthestFromLabel = new Label();
+        furthestFromLabel.setId("furthestLabelID");
         furthestFromLabel.setLayoutX(480);
         furthestFromLabel.setLayoutY(80);
         parent.getChildren().add(furthestFromLabel);
         
         Button furthestFromButton = new Button("Find Most Distant Location");
+        furthestFromButton.setId("furthestButtonID");
         furthestFromButton.addEventHandler(ActionEvent.ACTION, (event) -> {
             furthestFromLabel.setText("Most Distance Location:  \n" + back.getMostDistantLocation(startText.getText()));
         });

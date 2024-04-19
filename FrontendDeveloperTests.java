@@ -1,41 +1,101 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
-import java.io.IOException;
-import java.util.ArrayList;
+import org.junit.jupiter.api.BeforeEach;
+import org.testfx.framework.junit5.ApplicationTest;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.event.ActionEvent;
 import java.util.List;
-import java.util.Scanner;
 
-public class FrontendDeveloperTests {
+public class FrontendDeveloperTests extends ApplicationTest {
+
+    @BeforeEach
+    public void setup() throws Exception {
+	    ApplicationTest.launch(Frontend.class);
+    }
 
     /**
-     * tests frontend functionality
+     * This test finds the buttons in key methods, and confirms
+     * that the text in each has been properly initialized.
      */
     @Test
-    public void test1() {
+    public void testButtonsExist() {
+        Button button = lookup("#onlyButtonId").query();
+        assertEquals("click me",button.getText());
+    }
 
+    /**
+     * This test simulates finding the shortest path using 
+     * preset return values. Tests functionality of textFields
+     * and buttons.
+     */
+    @Test
+    public void testSearchPath() {
+        TextField startText = lookup("#startTextID").query();
+        TextField endText = lookup("#endTextID").query();
+        Label path = lookup("#pathID").query();
+        Button find = lookup("#findID").query();
+
+        clickOn("#startTextID");
+        write("it's lit");
+        assertEquals("it's lit",startText.getText());
+
+        clickOn("#endTextID");
+        write("it's litty");
+        assertEquals("it's litty",endText.getText());
+
+        clickOn("#findID");
+        assertTrue(path.getText().contains("Results List: "));
+    }
+
+    /**
+     * This test simulates finding the shortest path using 
+     * preset return values, including the times. Tests 
+     * functionality of textFields, buttons, and checkBoxes.
+     */
+    @Test
+    public void testSearchPathTimes() {
+        TextField startText = lookup("#startTextID").query();
+        TextField endText = lookup("#endTextID").query();
+        Label path = lookup("#pathID").query();
+        Button find = lookup("#findID").query();
+        CheckBox showTimesBox = lookup("#boxID").query();
+
+        clickOn("#startTextID");
+        write("it's lit");
+        assertEquals("it's lit",startText.getText());
+
+        clickOn("#endTextID");
+        write("it's litty");
+        assertEquals("it's litty",endText.getText());
+
+        clickOn("#boxID");
+
+        clickOn("#findID");
+        assertTrue(path.getText().contains("Results List (with walking times): "));
     }
 
     /**
      * tests frontend functionality
      */
     @Test
-    public void test2() {
+    public void testFurthest() {
+        TextField startText = lookup("#furthestTextID").query();
+        Label furthestFromLabel = lookup("#furthestLabelID").query();
+        Button furthestFromButton = lookup("#furthestButtonID").query();
 
-    }
+        clickOn("#startTextID");
+        write("it's lit");
+        assertEquals("it's lit",startText.getText());
 
-    /**
-     * tests frontend functionality
-     */
-    @Test
-    public void test3() {
-
-    }
-
-    /**
-     * tests frontend functionality
-     */
-    @Test
-    public void test4() {
-
+        clickOn("#furthestButtonID");
+        assertTrue(furthestFromLabel.getText().contains("Most Distance Location:"));
     }
 }
