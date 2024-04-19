@@ -18,7 +18,7 @@ public class FrontendDeveloperTests extends ApplicationTest {
 
     @BeforeEach
     public void setup() throws Exception {
-        // Frontend.setBackend(new BackendPlaceholder(new GraphPlaceholder()));
+        Frontend.setBackend(new BackendPlaceholder(new GraphPlaceholder()));
 	    ApplicationTest.launch(Frontend.class);
     }
 
