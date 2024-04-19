@@ -18,7 +18,7 @@ public class FrontendDeveloperTests extends ApplicationTest {
 
     @BeforeEach
     public void setup() throws Exception {
-	    ApplicationTest.launch(Frontend.class);
+	    ApplicationTest.launch(Frontend.class, args);
     }
 
     /**
@@ -104,6 +104,6 @@ public class FrontendDeveloperTests extends ApplicationTest {
      * as a JavaFX application through the following entry point.
      */
     public static void main(String[] args) {
-	    Application.launch(Frontend.class);
+	    Application.launch(Frontend.class, args);
     }
 }
