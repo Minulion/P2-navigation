@@ -80,7 +80,7 @@ public class Frontend extends Application implements FrontendInterface {
         find.setId("findID");
         find.setLayoutX(32);
         find.setLayoutY(80);
-        find.addEventHandler(ActionEvent.ACTION, (event) -> {
+        find.setOnAction(actionEvent -> {
             shortestPath = back.findShortestPath(startText.getText(), endText.getText());
             travelTimes = back.getTravelTimesOnPath(startText.getText(), endText.getText());
             totalTime = 0.0;
@@ -174,7 +174,7 @@ public class Frontend extends Application implements FrontendInterface {
         
         Button furthestFromButton = new Button("Find Most Distant Location");
         furthestFromButton.setId("furthestButtonID");
-        furthestFromButton.addEventHandler(ActionEvent.ACTION, (event) -> {
+        furthestFromButton.setOnAction(actionEvent-> {
             furthestFromLabel.setText("Most Distance Location:  \n" + back.getMostDistantLocation(startText.getText()));
         });
         furthestFromButton.setLayoutX(480);
