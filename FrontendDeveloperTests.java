@@ -104,6 +104,7 @@ public class FrontendDeveloperTests extends ApplicationTest {
      * as a JavaFX application through the following entry point.
      */
     public static void main(String[] args) {
+        Frontend.setBackend(new BackendPlaceholder(new GraphPlaceholder()));
 	    Application.launch(Frontend.class, args);
     }
 }
