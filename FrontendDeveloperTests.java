@@ -18,7 +18,7 @@ public class FrontendDeveloperTests extends ApplicationTest {
 
     @BeforeEach
     public void setup() throws Exception {
-	    ApplicationTest.launch(Frontend.class, args);
+	    ApplicationTest.launch(Frontend.class);
     }
 
     /**
