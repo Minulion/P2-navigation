@@ -40,7 +40,6 @@ public class FrontendDeveloperTests extends ApplicationTest {
     public void testSearchPath() {
         TextField startText = lookup("#startTextID").query();
         TextField endText = lookup("#endTextID").query();
-        Label path = lookup("#pathID").query();
         Button find = lookup("#findID").query();
 
         clickOn("#startTextID");
@@ -52,6 +51,7 @@ public class FrontendDeveloperTests extends ApplicationTest {
         Assertions.assertEquals("it's litty",endText.getText());
 
         clickOn("#findID");
+        Label path = lookup("#pathID").query();
         Assertions.assertTrue(path.getText().contains("Results List: "));
     }
 
