@@ -98,4 +98,12 @@ public class FrontendDeveloperTests extends ApplicationTest {
         clickOn("#furthestButtonID");
         Assertions.assertTrue(furthestFromLabel.getText().contains("Most Distance Location:"));
     }
+
+    /**
+     * To demonstrate the code being tested, you can run the SampleApp above
+     * as a JavaFX application through the following entry point.
+     */
+    public static void main(String[] args) {
+	    Application.launch(SampleApp.class);
+    }
 }
