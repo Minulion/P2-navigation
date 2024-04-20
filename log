@@ -1,0 +1,56 @@
+Script started on 2024-04-19 22:44:29-05:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="80" LINES="24"]
+[?2004h[kima@snares-07] (1)$ [7mgit status[27mgit status
+[?2004lOn branch frontend
+Your branch is up to date with 'origin/frontend'.
+
+nothing to commit, working tree clean
+[?2004h[kima@snares-07] (2)$ [7mgit log -1[27mgit log -1
+[?2004l[?1h=[33mcommit 7b987fcb829c6c8b241ed10f4685192869d8a072[m[33m ([m[1;36mHEAD -> [m[1;32mfrontend[m[33m, [m[1;31morigin/fronte[m [33m[m[33m[m[1;36m[m[1;32m[m[33m[m[1;31mnd[m[33m)[m[m
+Author: ANDREW KIM <akim227@wisc.edu>[m
+Date:   Fri Apr 19 22:41:28 2024 -0500[m
+[m
+    Update 2 files[m
+    [m
+    - /Frontend.java[m
+    - /FrontendDeveloperTests.java[m
+[K[?1l>[?2004h[kima@snares-07] (3)$ [7mmake clean[27mmake clean
+[?2004lrm *.class
+[?2004h[kima@snares-07] (4)$ [7mls[27mls
+[?2004lApp.java                 FrontendDeveloperTests.java  GraphADT.java
+BackendInterface.java    FrontendInterface.java       GraphPlaceholder.java
+BackendPlaceholder.java  Frontend.java                log
+campus.dot               FrontendPlaceholder.java     Makefile
+[?2004h[kima@snares-07] (5)$ [7mmake runTests[27mmake runTests
+[?2004ljavac --module-path ../javafx/lib --add-modules javafx.controls -cp .:../junit5fx.jar FrontendDeveloperTests.java
+java --module-path ../javafx/lib --add-modules javafx.controls --add-opens javafx.graphics/com.sun.javafx.application=ALL-UNNAMED -jar ../junit5fx.jar -cp . -c FrontendDeveloperTests
+
+Thanks for using JUnit! Support its development at https://junit.org/sponsoring
+
+[36m╷[0m
+[36m├─[0m [36mJUnit Jupiter[0m [32m✔[0m
+[36m│  └─[0m [36mFrontendDeveloperTests[0m [32m✔[0m
+[36m│     ├─[0m [34mtestFurthest()[0m [32m✔[0m
+[36m│     ├─[0m [34mtestAboutQuitExist()[0m [32m✔[0m
+[36m│     ├─[0m [34mtestSearchPath()[0m [32m✔[0m
+[36m│     └─[0m [34mtestSearchPathTimes()[0m [32m✔[0m
+[36m├─[0m [36mJUnit Vintage[0m [32m✔[0m
+[36m└─[0m [36mJUnit Platform Suite[0m [32m✔[0m
+
+Test run finished after 9792 ms
+[         4 containers found      ]
+[         0 containers skipped    ]
+[         4 containers started    ]
+[         0 containers aborted    ]
+[         4 containers successful ]
+[         0 containers failed     ]
+[         4 tests found           ]
+[         0 tests skipped         ]
+[         4 tests started         ]
+[         0 tests aborted         ]
+[         4 tests successful      ]
+[         0 tests failed          ]
+
+[?2004h[kima@snares-07] (6)$ [7mexit[27mexit
+[?2004lexit
+
+Script done on 2024-04-19 22:46:17-05:00 [COMMAND_EXIT_CODE="0"]
