@@ -23,13 +23,16 @@ public class FrontendDeveloperTests extends ApplicationTest {
     }
 
     /**
-     * This test finds the buttons in key methods, and confirms
+     * This test finds the about and quit buttons, and confirms
      * that the text in each has been properly initialized.
      */
     @Test
-    public void testButtonsExist() {
-        // Button button = lookup("#onlyButtonId").query();
-        // Assertions.assertEquals("click me",button.getText());
+    public void testAboutQuitExist() {
+        Button about = lookup("#aboutID").query();
+        Assertions.assertEquals("About",about.getText());
+
+        Button quit = lookup("#quitID").query();
+        Assertions.assertEquals("Quit",quit.getText());
     }
 
     /**
@@ -84,7 +87,9 @@ public class FrontendDeveloperTests extends ApplicationTest {
     }
 
     /**
-     * tests frontend functionality
+     * This test simulates finding the furthest location using 
+     * preset return values. Tests functionality of textFields 
+     * and buttons.
      */
     @Test
     public void testFurthest() {
@@ -92,16 +97,16 @@ public class FrontendDeveloperTests extends ApplicationTest {
         Label furthestFromLabel = lookup("#furthestLabelID").query();
         Button furthestFromButton = lookup("#furthestButtonID").query();
 
-        // clickOn("#startTextID");
-        // write("it's lit");
-        // Assertions.assertEquals("it's lit",startText.getText());
+        clickOn("#furthestTextID");
+        write("it's lit");
+        Assertions.assertEquals("it's lit",startText.getText());
 
         clickOn("#furthestButtonID");
         Assertions.assertTrue(furthestFromLabel.getText().contains("Most Distance Location:"));
     }
 
     /**
-     * To demonstrate the code being tested, you can run the SampleApp above
+     * To demonstrate the code being tested, you can run Frontend 
      * as a JavaFX application through the following entry point.
      */
     public static void main(String[] args) {
