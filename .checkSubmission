@@ -7,13 +7,7 @@ if [[ -f ${JUNITPATH} ]]; then
 fi
 
 if [[ -d /javafx  ]]; then
-    cp -r /javafx ../
-fi
-
-if [[ ! -f log ]]; then
-	echo
-	echo "Submission Failed Check: no log file found"
-	exit 1
+    cp -r /javafx ../javafx
 fi
 
 if [[ ! -f Makefile ]]; then
@@ -22,21 +16,24 @@ if [[ ! -f Makefile ]]; then
 	exit 1
 fi
 
-if ! grep -Pq "^\s*runTests\s*:" Makefile ; then
+if ! make runTests; then
 	echo
-	echo "Submission Failed Check: Makefile does not contain \"runTests\" target"
+	echo "Submission Failed Check: \"make runBDTests\" or  \"make runFDTests\" does not succeed or some tests do not pass"
 	exit 1
 fi
 
-if ! javac --module-path ../javafx/lib/ --add-modules javafx.controls App.java; then
-    echo
-    echo "Submission Failed Check: App.java does not compile"
+if grep -q "BackendPlaceholder" App.java; then
+    echo "Submission Failed Check: App.java uses BackendPlaceholder, but should not"
     exit 1
 fi
 
-if ! make clean ; then
-    echo
-    echo "Submission Failed Check: \"make clean\" does not succeed"
+if grep -q "FrontendPlaceholder" App.java; then
+    echo "Submission Failed Check: App.java uses FrontendPlaceholder, but should not"
+    exit 1
+fi
+
+if grep -q "GraphPlaceholder" App.java; then
+    echo "Submission Failed Check: App.java uses GraphPlaceholder, but should not"
     exit 1
 fi
 
