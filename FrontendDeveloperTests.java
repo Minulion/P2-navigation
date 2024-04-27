@@ -106,6 +106,55 @@ public class FrontendDeveloperTests extends ApplicationTest {
     }
 
     /**
+     * Tests frontend and backend together
+     */
+    @Test
+    public void integrationTest1() {
+        BackendInterface back = new BackendInterface();
+        back.loadGraphData("campus.dot");
+        Frontend.setBackend(back);
+	    ApplicationTest.launch(Frontend.class);
+
+        TextField startText = lookup("#startTextID").query();
+        TextField endText = lookup("#endTextID").query();
+        Label path = lookup("#pathID").query();
+        Button find = lookup("#findID").query();
+
+        clickOn("#startTextID");
+        write("it's lit");
+        Assertions.assertEquals("it's lit",startText.getText());
+
+        clickOn("#endTextID");
+        write("it's litty");
+        Assertions.assertEquals("it's litty",endText.getText());
+
+        clickOn("#findID");
+        Assertions.assertTrue(path.getText().contains("Results List: "));
+    }
+
+    /**
+     * Tests frontend and backend together
+     */
+    @Test
+    public void integrationTest2() {
+        BackendInterface back = new BackendInterface();
+        back.loadGraphData("campus.dot");
+        Frontend.setBackend(back);
+	    ApplicationTest.launch(Frontend.class);
+
+        TextField startText = lookup("#furthestTextID").query();
+        Label furthestFromLabel = lookup("#furthestLabelID").query();
+        Button furthestFromButton = lookup("#furthestButtonID").query();
+
+        clickOn("#furthestTextID");
+        write("it's lit");
+        Assertions.assertEquals("it's lit",startText.getText());
+
+        clickOn("#furthestButtonID");
+        Assertions.assertTrue(furthestFromLabel.getText().contains("Most Distance Location:"));
+    }
+
+    /**
      * To demonstrate the code being tested, you can run Frontend 
      * as a JavaFX application through the following entry point.
      */
