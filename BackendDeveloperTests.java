@@ -1,4 +1,5 @@
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -6,9 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.*;
 import java.util.List;
 
-
 //Frontend partner's imports
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.testfx.framework.junit5.ApplicationTest;
 
@@ -22,8 +21,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
-
-public class BackendDeveloperTests extends ApplicationTest{
+public class BackendDeveloperTests extends ApplicationTest {
 
    // Placeholder backend object for testing
    Backend backend = new Backend();
@@ -68,10 +66,11 @@ public class BackendDeveloperTests extends ApplicationTest{
    }
 
 
+
    @BeforeEach
    public void setup() throws Exception {
-      FrontendInterface.setBackend(new BackendPlaceholder(new GraphPlaceholder()));
-      ApplicationTest.launch(FrontendInterface.class);
+      FrontendPlaceholder.setBackend(new BackendPlaceholder(new GraphPlaceholder()));
+      ApplicationTest.launch(FrontendPlaceholder.class);
    }
 
    @Test
@@ -98,4 +97,5 @@ public class BackendDeveloperTests extends ApplicationTest{
       clickOn("#furthestButtonID");
       Assertions.assertTrue(furthestLabel.getText().contains("Most Distance Location:"));
    }
+
 }
