@@ -6,7 +6,24 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.*;
 import java.util.List;
 
-public class BackendDeveloperTests {
+
+//Frontend partner's imports
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.testfx.framework.junit5.ApplicationTest;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+
+
+public class BackendDeveloperTests extends ApplicationTest{
 
    // Placeholder backend object for testing
    Backend backend = new Backend();
@@ -48,5 +65,37 @@ public class BackendDeveloperTests {
       String mostDistant = backend.getMostDistantLocation("Union South");
 
       assertEquals("Atmospheric, Oceanic and Space Sciences", mostDistant);
+   }
+
+
+   @BeforeEach
+   public void setup() throws Exception {
+      FrontendInterface.setBackend(new BackendPlaceholder(new GraphPlaceholder()));
+      ApplicationTest.launch(FrontendInterface.class);
+   }
+
+   @Test
+   public void testAboutButtonIntegration() {
+      Button aboutButton = lookup("#aboutID").query();
+      Label aboutText = lookup("#aboutText").query();
+
+      clickOn("#aboutID");
+      Assertions.assertTrue(aboutText.getText().contains("Type locations into the search bar"));
+
+      clickOn("#aboutID");
+      Assertions.assertTrue(aboutText.getText().isEmpty());
+   }
+
+   @Test
+   public void testFurthestIntegration() {
+      TextField furthestText = lookup("#furthestTextID").query();
+      Label furthestLabel = lookup("#furthestLabelID").query();
+      Button findFurthestButton = lookup("#furthestButtonID").query();
+
+      clickOn("#furthestTextID");
+      write("Start Location");
+
+      clickOn("#furthestButtonID");
+      Assertions.assertTrue(furthestLabel.getText().contains("Most Distance Location:"));
    }
 }
