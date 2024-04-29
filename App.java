@@ -7,7 +7,7 @@ public class App {
     //FrontendPlaceholder.setBackend(new BackendPlaceholder(new GraphPlaceholder()));
     //Application.launch(FrontendPlaceholder.class, args);
 
-    Frontend.setBackend(new Backend(new GraphPlaceholder()));
+    Frontend.setBackend(new Backend(new DijkstraGraph()));
     Application.launch(Frontend.class, args);
 
   }

@@ -60,7 +60,7 @@ public class DijkstraGraph<NodeType, EdgeType extends Number> extends BaseGraph<
     * Constructor that sets the map that the graph uses.
     */
    public DijkstraGraph() {
-      super(new HashtableMap<>());
+      super(new PlaceholderMap<>());
    }
 
    /**
@@ -81,7 +81,7 @@ public class DijkstraGraph<NodeType, EdgeType extends Number> extends BaseGraph<
       PriorityQueue<SearchNode> pq = new PriorityQueue<>();
 
       // Initialize a map to keep track of visited nodes and their associated SearchNode
-      MapADT<NodeType, SearchNode> visited = new HashtableMap<>();
+      MapADT<NodeType, SearchNode> visited = new PlaceholderMap<>();
 
       // Add the starting node to the priority queue with a cost of 0
       pq.offer(new SearchNode(nodes.get(start), 0, null));

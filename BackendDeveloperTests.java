@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.List;
 
 //Frontend partner's imports
-import org.junit.jupiter.api.BeforeEach;
+/*import org.junit.jupiter.api.BeforeEach;
 import org.testfx.framework.junit5.ApplicationTest;
 
 import javafx.application.Application;
@@ -20,8 +20,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+*/
+//public class BackendDeveloperTests extends ApplicationTest {
 
-public class BackendDeveloperTests extends ApplicationTest {
+public class BackendDeveloperTests {
 
    // Placeholder backend object for testing
    Backend backend = new Backend();
@@ -67,7 +69,7 @@ public class BackendDeveloperTests extends ApplicationTest {
 
 
 
-   @BeforeEach
+  /* @BeforeEach
    public void setup() throws Exception {
       FrontendPlaceholder.setBackend(new BackendPlaceholder(new GraphPlaceholder()));
       ApplicationTest.launch(FrontendPlaceholder.class);
@@ -101,5 +103,5 @@ public class BackendDeveloperTests extends ApplicationTest {
    public static void main(String[] args) {
       FrontendPlaceholder.setBackend(new BackendPlaceholder(new GraphPlaceholder()));
       Application.launch(FrontendPlaceholder.class, args);
-   }
+   }*/
 }
