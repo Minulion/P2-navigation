@@ -98,4 +98,8 @@ public class BackendDeveloperTests extends ApplicationTest {
       Assertions.assertTrue(furthestLabel.getText().contains("Most Distance Location:"));
    }
 
+   public static void main(String[] args) {
+      FrontendPlaceholder.setBackend(new BackendPlaceholder(new GraphPlaceholder()));
+      Application.launch(FrontendPlaceholder.class, args);
+   }
 }
