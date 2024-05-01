@@ -26,12 +26,7 @@ public class BackendDeveloperTests {
    //Backend backend = new Backend(new GraphPlaceholder()); //initializationError
 
 
-   private Backend backend;
-
-   @BeforeEach
-   public void setUp() {
-      backend = new Backend(new GraphPlaceholder());// Initialize the graph object before each test method
-   }
+   private Backend backend = new Backend();
 
    @Test
    public void testGetListOfAllLocations() {

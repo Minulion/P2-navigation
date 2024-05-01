@@ -19,8 +19,7 @@ public class Backend implements BackendInterface {
       this.graph = new GraphPlaceholder();
    }
 
-   public Backend(GraphADT<String, Double> graphADT) {}
-
+   public Backend(GraphADT<Object, Number> dijkstraGraph) {}
 
    public void loadGraphData(String filename) throws IOException {
       BufferedReader reader = new BufferedReader(new FileReader(filename));
