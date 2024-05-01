@@ -4,12 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.*;
 import java.util.List;
 
 //Frontend partner's imports
-/*import org.junit.jupiter.api.BeforeEach;
-import org.testfx.framework.junit5.ApplicationTest;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -20,17 +17,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
-*/
-//public class BackendDeveloperTests extends ApplicationTest {
 
 public class BackendDeveloperTests {
 
    // Placeholder backend object for testing
-   Backend backend = new Backend();
+   Backend backend = new Backend(new GraphPlaceholder()); //initializationError
+
 
    @Test
    public void testGetListOfAllLocations() {
       List<String> locations = backend.getListOfAllLocations();
+      DijkstraGraph<String, Double> graph = new DijkstraGraph<>();
 
       assertFalse(locations.isEmpty());
       assertEquals(3, locations.size());
@@ -67,41 +64,21 @@ public class BackendDeveloperTests {
       assertEquals("Atmospheric, Oceanic and Space Sciences", mostDistant);
    }
 
-
-
-  /* @BeforeEach
-   public void setup() throws Exception {
-      FrontendPlaceholder.setBackend(new BackendPlaceholder(new GraphPlaceholder()));
-      ApplicationTest.launch(FrontendPlaceholder.class);
+   @Test
+   public void testCreateAllControls() {
+      FrontendInterface frontend = new Frontend();
+      Pane parent = new Pane();
+      frontend.createAllControls(parent);
+      assertEquals(5, parent.getChildren().size()); // Assuming four controls are added
    }
 
    @Test
-   public void testAboutButtonIntegration() {
-      Button aboutButton = lookup("#aboutID").query();
-      Label aboutText = lookup("#aboutText").query();
-
-      clickOn("#aboutID");
-      Assertions.assertTrue(aboutText.getText().contains("Type locations into the search bar"));
-
-      clickOn("#aboutID");
-      Assertions.assertTrue(aboutText.getText().isEmpty());
+   public void testCreateShortestPathControls() {
+      FrontendInterface frontend = new Frontend();
+      Pane parent = new Pane();
+      frontend.createShortestPathControls(parent);
+      assertEquals(3, parent.getChildren().size());
    }
 
-   @Test
-   public void testFurthestIntegration() {
-      TextField furthestText = lookup("#furthestTextID").query();
-      Label furthestLabel = lookup("#furthestLabelID").query();
-      Button findFurthestButton = lookup("#furthestButtonID").query();
 
-      clickOn("#furthestTextID");
-      write("Start Location");
-
-      clickOn("#furthestButtonID");
-      Assertions.assertTrue(furthestLabel.getText().contains("Most Distance Location:"));
-   }
-
-   public static void main(String[] args) {
-      FrontendPlaceholder.setBackend(new BackendPlaceholder(new GraphPlaceholder()));
-      Application.launch(FrontendPlaceholder.class, args);
-   }*/
 }

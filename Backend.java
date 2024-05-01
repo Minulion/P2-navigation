@@ -7,11 +7,22 @@ import java.util.NoSuchElementException;
 
 public class Backend implements BackendInterface {
 
+   /*private DijkstraGraph graph;
+
+   public Backend(DijkstraGraph<String, Double> stringDoubleDijkstraGraph) {
+      this.graph = new DijkstraGraph<String, Double>();
+   }*/
+
    private GraphPlaceholder graph;
 
    public Backend() {
       this.graph = new GraphPlaceholder();
    }
+
+   public Backend(GraphADT<String, Double> graphADT) {}
+   //GraphADT
+
+
 
    public void loadGraphData(String filename) throws IOException {
       BufferedReader reader = new BufferedReader(new FileReader(filename));
@@ -22,7 +33,7 @@ public class Backend implements BackendInterface {
             String source = parts[0].replaceAll("\"", "").trim();
             String target = parts[1].replaceAll("\"", "").trim();
             Double weight = Double.parseDouble(parts[2].trim());
-            graph.insertEdge(source, target, weight);
+            graph.insertEdge(source, target, weight); //change from graph to dGraph
          }
       }
       reader.close();
@@ -46,11 +57,11 @@ public class Backend implements BackendInterface {
       for (int i = 0; i < path.size() - 1; i++) {
          String currentLocation = path.get(i);
          String nextLocation = path.get(i + 1);
-	try{
+         try{
             double travelTime = graph.getEdge(currentLocation, nextLocation).doubleValue();
-           System.out.println("Travel time between " + currentLocation + " and " + nextLocation + ": " + travelTime);
-	    travelTimes.add(travelTime);
-	}catch (NoSuchElementException e) {
+            System.out.println("Travel time between " + currentLocation + " and " + nextLocation + ": " + travelTime);
+            travelTimes.add(travelTime);
+         }catch (NoSuchElementException e) {
             System.out.println(currentLocation + " ----" + nextLocation);
          }
       }
