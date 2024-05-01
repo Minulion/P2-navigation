@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -17,12 +18,20 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import org.junit.jupiter.api.BeforeEach;
 
 public class BackendDeveloperTests {
 
    // Placeholder backend object for testing
-   Backend backend = new Backend(new GraphPlaceholder()); //initializationError
+   //Backend backend = new Backend(new GraphPlaceholder()); //initializationError
 
+
+   private Backend backend;
+
+   @BeforeEach
+   public void setUp() {
+      backend = new Backend(new GraphPlaceholder());// Initialize the graph object before each test method
+   }
 
    @Test
    public void testGetListOfAllLocations() {

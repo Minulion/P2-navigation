@@ -20,8 +20,6 @@ public class Backend implements BackendInterface {
    }
 
    public Backend(GraphADT<String, Double> graphADT) {}
-   //GraphADT
-
 
 
    public void loadGraphData(String filename) throws IOException {
