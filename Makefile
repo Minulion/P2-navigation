@@ -1,11 +1,14 @@
 runTests: BackendDeveloperTests.class
-	java -jar ../junit5.jar --class-path=. --select-class=BackendDeveloperTests
+	#java -jar ../junit5.jar --class-path=. --select-class=BackendDeveloperTests
+	java --module-path ../javafx/lib --add-modules javafx.controls --add-opens javafx.graphics/com.sun.javafx.application=ALL-UNNAMED -jar ../junit5fx.jar -cp . -c BackendDeveloperTests
+
 
 runApp: App.class
 	java App
 
 App.class:
 	javac App.java
+	javac -cp ../junit5.jar:. DijkstraGraph.java
 
 BackendDeveloperTests.class: BackendDeveloperTests.java
 	#javac -cp ../junit5.jar:. BackendDeveloperTests.java

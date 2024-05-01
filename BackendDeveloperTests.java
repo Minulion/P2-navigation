@@ -73,6 +73,7 @@ public class BackendDeveloperTests {
       FrontendInterface frontend = new Frontend();
       Pane parent = new Pane();
       frontend.createAllControls(parent);
+      System.out.println(parent.getChildren().size()+ "!!!!!!!!!!");
       assertEquals(5, parent.getChildren().size()); // Assuming four controls are added
    }
 
