@@ -7,19 +7,20 @@ import java.util.NoSuchElementException;
 
 public class Backend implements BackendInterface {
 
-   /*private DijkstraGraph graph;
+   private DijkstraGraph<String, Double> graph;
+   private GraphPlaceholder graphPlaceholder;
+   private List<String> sourceTargetList;
 
-   public Backend(DijkstraGraph<String, Double> stringDoubleDijkstraGraph) {
-      this.graph = new DijkstraGraph<String, Double>();
-   }*/
-
-   private GraphPlaceholder graph;
+   public Backend(GraphADT<String, Double> graph) {
+      this.graph = (DijkstraGraph<String, Double>) graph;
+      this.graphPlaceholder = new GraphPlaceholder();
+      this.sourceTargetList = sourceTargetList; 
+  }
 
    public Backend() {
-      this.graph = new GraphPlaceholder();
+      this.graphPlaceholder = new GraphPlaceholder();
    }
 
-   public Backend(GraphADT<Object, Number> dijkstraGraph) {}
 
    public void loadGraphData(String filename) throws IOException {
       BufferedReader reader = new BufferedReader(new FileReader(filename));
@@ -30,6 +31,10 @@ public class Backend implements BackendInterface {
             String source = parts[0].replaceAll("\"", "").trim();
             String target = parts[1].replaceAll("\"", "").trim();
             Double weight = Double.parseDouble(parts[2].trim());
+
+            sourceTargetList.add(source);
+            sourceTargetList.add(target);
+
             graph.insertEdge(source, target, weight); //change from graph to dGraph
          }
       }
@@ -37,11 +42,16 @@ public class Backend implements BackendInterface {
    }
 
    public List<String> getListOfAllLocations() {
-      List<String> locations = new ArrayList<>(graph.getNodeCount());
-      for (int i = 0; i < graph.getNodeCount(); i++) {
-         locations.add(graph.path.get(i));
+
+      List<String> allLocations = new ArrayList<>();
+      List<String> seenElements = new ArrayList<>();
+      for (String element : sourceTargetList) {
+         if (!seenElements.contains(element)) {
+            allLocations.add(element);
+            seenElements.add(element);
+         }
       }
-      return locations;
+      return allLocations;
    }
 
    public List<String> findShortestPath(String startLocation, String endLocation) {
