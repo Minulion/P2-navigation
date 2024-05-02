@@ -153,12 +153,12 @@ public class FrontendDeveloperTests extends ApplicationTest {
         Button find = lookup("#findID").query();
 
         clickOn("#startTextID");
-        write("it's lit");
-        Assertions.assertEquals("it's lit",startText.getText());
+        write("Memorial Union");
+        Assertions.assertEquals("Memorial Union",startText.getText());
 
         clickOn("#endTextID");
-        write("it's litty");
-        Assertions.assertEquals("it's litty",endText.getText());
+        write("Science Hall");
+        Assertions.assertEquals("Science Hall",endText.getText());
 
         clickOn("#findID");
         Assertions.assertTrue(path.getText().contains("Results List: "));
@@ -187,8 +187,8 @@ public class FrontendDeveloperTests extends ApplicationTest {
         Button furthestFromButton = lookup("#furthestButtonID").query();
 
         clickOn("#furthestTextID");
-        write("Union South");
-        Assertions.assertEquals("Union South",startText.getText());
+        write("Memorial Union");
+        Assertions.assertEquals("Memorial Union",startText.getText());
 
         clickOn("#furthestButtonID");
         Assertions.assertTrue(furthestFromLabel.getText().contains("Most Distance Location:"));
