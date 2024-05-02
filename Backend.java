@@ -43,7 +43,14 @@ public class Backend implements BackendInterface {
    }
 
    public List<String> findShortestPath(String startLocation, String endLocation) {
-      return graph.shortestPathData(startLocation, endLocation);
+      List<String> path = new ArrayList<>();
+      try {
+         path = graph.shortestPathData(startLocation, endLocation);
+      } catch (NoSuchElementException e) {
+         path.add
+      }
+
+      return 
    }
 
    public List<Double> getTravelTimesOnPath(String startLocation, String endLocation) {

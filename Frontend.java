@@ -82,34 +82,38 @@ public class Frontend extends Application implements FrontendInterface {
         find.setLayoutY(80);
         find.addEventHandler(ActionEvent.ACTION, (event) -> {
             shortestPath = back.findShortestPath(startText.getText(), endText.getText());
-            travelTimes = back.getTravelTimesOnPath(startText.getText(), endText.getText());
-            totalTime = 0.0;
-            for (Double d : travelTimes) { //iterate thru travelTimes to sum them up into totalTime
-                totalTime += d;
-            }
-            totalTime = totalTime/60; //conversion to minutes
-
-            if (!showTimes) {
-                pathString = "Results List: ";
-                for (int i = 0; i < shortestPath.size(); i++) {
-                    pathString += "\n\t";
-                    pathString += shortestPath.get(i);
-                }
+            if (shortestPath == null) {
+                pathString = "No path found...";
             } else {
-                pathString = "Results List (with walking times): ";
-                pathString += "\n\t";
-                pathString += shortestPath.get(0);
-                for (int i = 1; i < shortestPath.size(); i++) {
-                    pathString += "\n\t";
-                    pathString += "-(";
-                    pathString += String.valueOf(travelTimes.get(i - 1));
-                    pathString += "sec)->";
-                    pathString += shortestPath.get(i);
+                travelTimes = back.getTravelTimesOnPath(startText.getText(), endText.getText());
+                totalTime = 0.0;
+                for (Double d : travelTimes) { //iterate thru travelTimes to sum them up into totalTime
+                    totalTime += d;
                 }
-                pathString += "\n\t";
-                pathString += "Total time: ";
-                pathString += String.valueOf(totalTime);
-                pathString += "min";
+                totalTime = totalTime/60; //conversion to minutes
+
+                if (!showTimes) {
+                    pathString = "Results List: ";
+                    for (int i = 0; i < shortestPath.size(); i++) {
+                        pathString += "\n\t";
+                        pathString += shortestPath.get(i);
+                    }
+                } else {
+                    pathString = "Results List (with walking times): ";
+                    pathString += "\n\t";
+                    pathString += shortestPath.get(0);
+                    for (int i = 1; i < shortestPath.size(); i++) {
+                        pathString += "\n\t";
+                        pathString += "-(";
+                        pathString += String.valueOf(travelTimes.get(i - 1));
+                        pathString += "sec)->";
+                        pathString += shortestPath.get(i);
+                    }
+                    pathString += "\n\t";
+                    pathString += "Total time: ";
+                    pathString += String.valueOf(totalTime);
+                    pathString += "min";
+                }
             }
             path.setText(pathString);
         });
