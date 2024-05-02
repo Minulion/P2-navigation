@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import java.io.IOException;
 
 public class App {
   public static void main(String[] args) {
@@ -7,7 +8,7 @@ public class App {
     try {
       back.loadGraphData("campus.dot");
     } catch (IOException e) {
-      Assertions.fail("invalid file :)");
+      
     }
     Frontend.setBackend(back);
 
