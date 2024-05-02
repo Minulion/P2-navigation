@@ -9,7 +9,7 @@ import java.util.List;
 public class BackendDeveloperTests {
 
    // Placeholder backend object for testing
-   Backend backend = new Backend(new GraphPlaceholder());
+   Backend backend = new Backend();
 
    @Test
    public void testGetListOfAllLocations() {
