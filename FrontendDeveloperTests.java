@@ -203,7 +203,8 @@ public class FrontendDeveloperTests extends ApplicationTest {
      */
     @Test
     public void partnerTest1() {
-        Assertions.assertThrows(NoSuchElementException.class, () -> backend.getMostDistantLocation("it's litty"));
+        Backend back = new Backend(new DijkstraGraph());
+        Assertions.assertThrows(NoSuchElementException.class, () -> back.getMostDistantLocation("it's litty"));
     }
 
     /**
@@ -212,8 +213,9 @@ public class FrontendDeveloperTests extends ApplicationTest {
      */
     @Test
     public void partnerTest2() {
-        List<String> path = backend.findShortestPath("Union South", "it's litty");
-        assertTrue(path.isEmpty());
+        Backend back = new Backend(new DijkstraGraph());
+        List<String> path = back.findShortestPath("Union South", "it's litty");
+        Assertions.assertTrue(path.isEmpty());
     }
 
     /**
