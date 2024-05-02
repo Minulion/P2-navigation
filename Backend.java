@@ -7,11 +7,13 @@ import java.util.NoSuchElementException;
 
 public class Backend implements BackendInterface {
 
-   private DijkstraGraph graph; //changed to DijkstraGraph
+   private GraphADT graph; //changed to GraphADT
 
-   public Backend() {
-      this.graph = new DijkstraGraph();
+   public Backend(GraphADT graph) {
+      this.graph = graph; //constructor was empty, updated to take GraphADT
    }
+
+   ArrayList<String> allLocations = new ArrayList<>();  //new list to keep track of locations
 
    public void loadGraphData(String filename) throws IOException {
       BufferedReader reader = new BufferedReader(new FileReader(filename));
@@ -23,17 +25,19 @@ public class Backend implements BackendInterface {
             String target = parts[1].replaceAll("\"", "").trim();
             Double weight = Double.parseDouble(parts[2].trim());
             graph.insertEdge(source, target, weight);
+            if (!allLocations.contains(source)) { //add to list of locations if not already added
+               allLocations.add(source);
+            }
+            if (!allLocations.contains(target)) {
+               allLocations.add(target);
+            }
          }
       }
       reader.close();
    }
 
    public List<String> getListOfAllLocations() {
-      List<String> locations = new ArrayList<>(graph.getNodeCount());
-      for (int i = 0; i < graph.getNodeCount(); i++) {
-         locations.add(graph.path.get(i));
-      }
-      return locations;
+      return allLocations; //changed method to use new list
    }
 
    public List<String> findShortestPath(String startLocation, String endLocation) {

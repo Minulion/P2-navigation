@@ -112,7 +112,7 @@ public class FrontendDeveloperTests extends ApplicationTest {
      */
     @Test
     public void integrationTest1() {
-        Backend back = new Backend();
+        Backend back = new Backend(new DijkstraGraph());
         try {
             back.loadGraphData("campus.dot");
         } catch (IOException e) {
@@ -147,7 +147,7 @@ public class FrontendDeveloperTests extends ApplicationTest {
      */
     @Test
     public void integrationTest2() {
-        Backend back = new Backend();
+        Backend back = new Backend(new DijkstraGraph());
         try {
             back.loadGraphData("campus.dot");
         } catch (IOException e) {
