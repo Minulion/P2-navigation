@@ -92,7 +92,7 @@ public class DijkstraGraph<NodeType, EdgeType extends Number>
                 map.put(current.node.data, current); //put node in list of visited
                 for (Edge edge : current.node.edgesLeaving) { //iterate through all outgoing edges
                     if (!map.containsKey(edge.successor.data)) { //if destination of edge not yet visited
-                        SearchNode next = new SearchNode(edge.successor, current.cost + (Integer)edge.data, current); 
+                        SearchNode next = new SearchNode(edge.successor, current.cost + (Double)edge.data, current); 
                         // ^ new path to destination of edge, cost of old path plus edge weight, predecessor is old path
                         pq.add(next); //add new path to priorityQueue
                     }
