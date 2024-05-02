@@ -7,10 +7,10 @@ import java.util.NoSuchElementException;
 
 public class Backend implements BackendInterface {
 
-   private GraphPlaceholder graph;
+   private DijkstraGraph graph; //changed to DijkstraGraph
 
    public Backend() {
-      this.graph = new GraphPlaceholder();
+      this.graph = new DijkstraGraph();
    }
 
    public void loadGraphData(String filename) throws IOException {
