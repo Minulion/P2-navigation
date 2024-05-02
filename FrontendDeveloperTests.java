@@ -203,7 +203,7 @@ public class FrontendDeveloperTests extends ApplicationTest {
      */
     @Test
     public void partnerTest1() {
-        Assertions.assertThrows(NoSuchElementException.class, () -> backend.getMostDistantLocation("it's litty"););
+        Assertions.assertThrows(NoSuchElementException.class, () -> backend.getMostDistantLocation("it's litty"));
     }
 
     /**
