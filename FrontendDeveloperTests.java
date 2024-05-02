@@ -130,7 +130,8 @@ public class FrontendDeveloperTests extends ApplicationTest {
     }
 
     /**
-     * Tests frontend and backend together
+     * Tests finding the shortest path using
+     * frontend and backend together
      */
     @Test
     public void integrationTest1() {
@@ -165,7 +166,8 @@ public class FrontendDeveloperTests extends ApplicationTest {
     }
 
     /**
-     * Tests frontend and backend together
+     * Tests finding the furthest location
+     * using frontend and backend together
      */
     @Test
     public void integrationTest2() {
@@ -192,6 +194,26 @@ public class FrontendDeveloperTests extends ApplicationTest {
 
         clickOn("#furthestButtonID");
         Assertions.assertTrue(furthestFromLabel.getText().contains("Most Distance Location:"));
+    }
+
+    /**
+     * Tests that getMostDistantLocation() 
+     * throws a NoSuchElementException when
+     * necessary.
+     */
+    @Test
+    public void partnerTest1() {
+        Assertions.assertThrows(NoSuchElementException.class, () -> backend.getMostDistantLocation("it's litty"););
+    }
+
+    /**
+     * Tests that findShortestPath() returns
+     * an empty list when no path exists.
+     */
+    @Test
+    public void partnerTest2() {
+        List<String> path = backend.findShortestPath("Union South", "it's litty");
+        assertTrue(path.isEmpty());
     }
 
     /**
