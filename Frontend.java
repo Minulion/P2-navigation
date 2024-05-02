@@ -82,7 +82,7 @@ public class Frontend extends Application implements FrontendInterface {
         find.setLayoutY(80);
         find.addEventHandler(ActionEvent.ACTION, (event) -> {
             shortestPath = back.findShortestPath(startText.getText(), endText.getText());
-            if (shortestPath == null) {
+            if (shortestPath.size() == 0) {
                 pathString = "No path found...";
             } else {
                 travelTimes = back.getTravelTimesOnPath(startText.getText(), endText.getText());
