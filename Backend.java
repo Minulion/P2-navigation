@@ -24,6 +24,8 @@ public class Backend implements BackendInterface {
             String source = parts[0].replaceAll("\"", "").trim();
             String target = parts[1].replaceAll("\"", "").trim();
             Double weight = Double.parseDouble(parts[2].trim());
+            graph.insertNode(source); //add nodes to graph before edge
+            graph.insertNode(target);
             graph.insertEdge(source, target, weight);
             if (!allLocations.contains(source)) { //add to list of locations if not already added
                allLocations.add(source);
