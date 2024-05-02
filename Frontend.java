@@ -13,7 +13,7 @@ public class Frontend extends Application implements FrontendInterface {
 
     private static Backend back;
 
-    public static void setBackend(Back back) {
+    public static void setBackend(Backend back) {
         Frontend.back = back;
     }
     
