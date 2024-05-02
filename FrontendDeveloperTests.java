@@ -18,18 +18,19 @@ import java.util.NoSuchElementException;
 
 public class FrontendDeveloperTests extends ApplicationTest {
 
-    @BeforeEach
-    public void setup() throws Exception {
-        Frontend.setBackend(new BackendPlaceholder(new GraphPlaceholder()));
-	    ApplicationTest.launch(Frontend.class);
-    }
-
     /**
      * This test finds the about and quit buttons, and confirms
      * that the text in each has been properly initialized.
      */
     @Test
     public void testAboutQuitExist() {
+        Frontend.setBackend(new BackendPlaceholder(new GraphPlaceholder()));
+        try {
+            ApplicationTest.launch(Frontend.class);
+        } catch (Exception e) {
+            Assertions.fail("app failed :)");
+        }
+
         Button about = lookup("#aboutID").query();
         Assertions.assertEquals("About",about.getText());
 
@@ -44,6 +45,13 @@ public class FrontendDeveloperTests extends ApplicationTest {
      */
     @Test
     public void testSearchPath() {
+        Frontend.setBackend(new BackendPlaceholder(new GraphPlaceholder()));
+        try {
+            ApplicationTest.launch(Frontend.class);
+        } catch (Exception e) {
+            Assertions.fail("app failed :)");
+        }
+
         TextField startText = lookup("#startTextID").query();
         TextField endText = lookup("#endTextID").query();
         Label path = lookup("#pathID").query();
@@ -68,6 +76,13 @@ public class FrontendDeveloperTests extends ApplicationTest {
      */
     @Test
     public void testSearchPathTimes() {
+        Frontend.setBackend(new BackendPlaceholder(new GraphPlaceholder()));
+        try {
+            ApplicationTest.launch(Frontend.class);
+        } catch (Exception e) {
+            Assertions.fail("app failed :)");
+        }
+
         TextField startText = lookup("#startTextID").query();
         TextField endText = lookup("#endTextID").query();
         Label path = lookup("#pathID").query();
@@ -95,6 +110,13 @@ public class FrontendDeveloperTests extends ApplicationTest {
      */
     @Test
     public void testFurthest() {
+        Frontend.setBackend(new BackendPlaceholder(new GraphPlaceholder()));
+        try {
+            ApplicationTest.launch(Frontend.class);
+        } catch (Exception e) {
+            Assertions.fail("app failed :)");
+        }
+
         TextField startText = lookup("#furthestTextID").query();
         Label furthestFromLabel = lookup("#furthestLabelID").query();
         Button furthestFromButton = lookup("#furthestButtonID").query();
