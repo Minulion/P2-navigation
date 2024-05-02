@@ -113,9 +113,17 @@ public class FrontendDeveloperTests extends ApplicationTest {
     @Test
     public void integrationTest1() {
         Backend back = new Backend();
-        back.loadGraphData("campus.dot");
+        try {
+            back.loadGraphData("campus.dot");
+        } catch (IOException e) {
+            Assertions.fail("invalid file :)");
+        }
         Frontend.setBackend(back);
-	    ApplicationTest.launch(Frontend.class);
+        try {
+            ApplicationTest.launch(Frontend.class);
+        } catch (Exception e) {
+            Assertions.fail("app failed :)");
+        }
 
         TextField startText = lookup("#startTextID").query();
         TextField endText = lookup("#endTextID").query();
@@ -146,7 +154,11 @@ public class FrontendDeveloperTests extends ApplicationTest {
             Assertions.fail("invalid file :)");
         }
         Frontend.setBackend(back);
-	    ApplicationTest.launch(Frontend.class);
+        try {
+            ApplicationTest.launch(Frontend.class);
+        } catch (Exception e) {
+            Assertions.fail("app failed :)");
+        }
 
         TextField startText = lookup("#furthestTextID").query();
         Label furthestFromLabel = lookup("#furthestLabelID").query();
