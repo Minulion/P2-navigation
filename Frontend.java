@@ -11,9 +11,9 @@ import java.util.List;
 
 public class Frontend extends Application implements FrontendInterface {
 
-    private static Backend back;
+    private static BackendInterface back;
 
-    public static void setBackend(Backend back) {
+    public static void setBackend(BackendInterface back) {
         Frontend.back = back;
     }
     
