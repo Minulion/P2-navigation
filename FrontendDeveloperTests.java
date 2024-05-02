@@ -110,7 +110,7 @@ public class FrontendDeveloperTests extends ApplicationTest {
      */
     @Test
     public void integrationTest1() {
-        BackendInterface back = new BackendInterface();
+        Backend back = new Backend();
         back.loadGraphData("campus.dot");
         Frontend.setBackend(back);
 	    ApplicationTest.launch(Frontend.class);
@@ -137,7 +137,7 @@ public class FrontendDeveloperTests extends ApplicationTest {
      */
     @Test
     public void integrationTest2() {
-        BackendInterface back = new BackendInterface();
+        Backend back = new Backend();
         back.loadGraphData("campus.dot");
         Frontend.setBackend(back);
 	    ApplicationTest.launch(Frontend.class);
