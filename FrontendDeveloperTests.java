@@ -13,6 +13,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import java.util.List;
+import java.io.IOException;
+import java.util.NoSuchElementException;
 
 public class FrontendDeveloperTests extends ApplicationTest {
 
