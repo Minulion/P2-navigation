@@ -7,11 +7,14 @@ public class App {
     Backend back = new Backend(new DijkstraGraph());
     try {
       back.loadGraphData("campus.dot");
-    } catch (IOException e) {
-      
-    }
-    Frontend.setBackend(back);
+      Frontend.setBackend(back);
 
-    Application.launch(Frontend.class, args);
+      Application.launch(Frontend.class, args);
+    } catch (IOException e) {
+      System.out.println("failed to load file");
+    }
+    // Frontend.setBackend(back);
+
+    // Application.launch(Frontend.class, args);
   }
 }
