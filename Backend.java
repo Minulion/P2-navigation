@@ -68,10 +68,12 @@ public class Backend implements BackendInterface {
       double maxDistance = Double.MIN_VALUE;
       String mostDistant = null;
       for (String location : allLocations) {
-         if (location.equals(startLocation)) { //accounts for start -> start, can't find path
+         double distance = null;
+         try { //skip locations that can't be accessed
+            distance = graph.shortestPathCost(startLocation, location);
+         } catch (NoSuchElementException e) {
             continue;
          }
-         double distance = graph.shortestPathCost(startLocation, location);
          if (distance > maxDistance) {
             maxDistance = distance;
             mostDistant = location;
