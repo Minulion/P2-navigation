@@ -138,7 +138,11 @@ public class FrontendDeveloperTests extends ApplicationTest {
     @Test
     public void integrationTest2() {
         Backend back = new Backend();
-        back.loadGraphData("campus.dot");
+        try {
+            back.loadGraphData("campus.dot");
+        } catch (IOException e) {
+            Assertions.fail("invalid file :)");
+        }
         Frontend.setBackend(back);
 	    ApplicationTest.launch(Frontend.class);
 
