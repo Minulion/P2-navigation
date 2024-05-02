@@ -165,8 +165,8 @@ public class FrontendDeveloperTests extends ApplicationTest {
         Button furthestFromButton = lookup("#furthestButtonID").query();
 
         clickOn("#furthestTextID");
-        write("it's lit");
-        Assertions.assertEquals("it's lit",startText.getText());
+        write("Union South");
+        Assertions.assertEquals("Union South",startText.getText());
 
         clickOn("#furthestButtonID");
         Assertions.assertTrue(furthestFromLabel.getText().contains("Most Distance Location:"));
