@@ -1,0 +1,6 @@
+digraph example {
+	"A" -> "B" [seconds=4.0];
+	"A" -> "C" [seconds=2.0];
+	"B" -> "D" [seconds=1.0];
+	"C" -> "D" [seconds=5.0];
+}
